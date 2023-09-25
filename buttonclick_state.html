@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- <script>
+        let counter = 0;
+
+        function clickHandler() {
+            const p = document.getElementById("p");
+            // const btn = document.getElementById("btn");
+            counter++;
+            p.innerText = `${counter} 번 클릭했습니다.`;
+        }
+    </script> -->
+    <!-- JSX로 element 생성 -->
+    <script type="text/babel">
+        const root = document.getElementById("root");
+
+        function App() {
+            const [counter, setCounter] = React.useState(0);
+            function clickHandler() {
+                setCounter(counter + 1);
+                console.log("rendered!!");
+                console.log(counter);
+            }
+
+            // 함수형 컴포넌트
+            function P() {
+                return (
+                    <p id = "count" onMouseEnter={() => console.log("mouse enter 이벤트 발생")}>
+                        {counter} 번 클릭했습니다.
+                    </p>
+                )
+            }
+
+            // 함수형 컴포넌트
+            const Btn = () => (
+                <button onClick={clickHandler}>
+                    클릭하세요.    
+                </button>
+            )
+
+            return (
+                <div>
+                    <P />
+                    <Btn />
+                </div>
+            );
+        }
+        
+
+        ReactDOM.render(<App />, root);
+    </script>
+</head>
+<body>
+    <!-- <p id="p">0 번 클릭했습니다.</p>
+    <button id="btn" onclick="clickHandler()">클릭하세요.</button> -->
+    <div id="root"></div>
+</body>
+</html>
